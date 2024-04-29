@@ -26,7 +26,7 @@ langchainhub = "^0.1.15"
 tavily-python = "^0.3.3"
 
 [tool.poetry.group.dev.dependencies]
-black = "^24.3.0"
+black = "^24.4.2"
 
 [build-system]
 requires = ["poetry-core"]
