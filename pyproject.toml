@@ -11,7 +11,7 @@ license = "GNU AGPL"
 python = ">=3.10,<3.12"
 
 langchain = "^0.1.6"
-langchain-openai = "^0.0.7"
+langchain-openai = "^0.1.4"
 streamlit = "1.33.0"
 unstructured = {extras = ["all-docs"], version = "^0.12.4"}
 sentence-transformers = "^2.3.1"
