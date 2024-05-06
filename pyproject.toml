@@ -10,7 +10,7 @@ license = "GNU AGPL"
 [tool.poetry.dependencies]
 python = ">=3.10,<3.12"
 
-langchain = "^0.1.6"
+langchain = "^0.1.17"
 langchain-openai = "^0.0.7"
 streamlit = "1.33.0"
 unstructured = {extras = ["all-docs"], version = "^0.12.4"}
