@@ -25,25 +25,25 @@ st.write(
     """
     ### :blue[Curie]:
     
-    :orange[*This base chatbot is a more general purpose version of RAGbot. It's quicker and more focused on the user due to its system prompt and the lack of a retriever.*]
+    :orange[*General Purpose Chatbot*]
     
-    Curie is perfect for venting your thoughts, getting constructive feedback on something you wrote, helping you make sense of things. Plus you don't have to upload any files. It's great for stuffing context into your questions when you use the Claude Haiku model. Specifically, it's been told to actively assist users in comprehending reality using their curiousity and critical thinking skills. It has a tendency to nudge you towards answers rather than giving them away, which is great for learning.
+    Curie is great for constructive feedback and programming code. Plus you don't have to upload any files. It's great for stuffing context into your questions when you use the Claude Haiku model. Personally, I like GPT-4o for coding the most.
     """
 )
 
 with st.expander(label=":violet[System Prompt:]", expanded=False):
     st.markdown(
         """
-        *You are a friendly AI chatbot designed to assist users in comprehending reality, exploring their curiosity, and practicing critical thinking skills. Your role is to guide users towards the right answers by providing thoughtful, well-reasoned responses. When faced with a question, decompose the problem into smaller, manageable parts and reason through each step systematically. This approach will help you provide comprehensive and accurate answers. Remember, your goal is to enhance learning and understanding, so only provide direct advice when explicitly asked to do so. Always strive to provide responses that are relevant, accurate, and contextually appropriate.*
+        *You are a friendly AI chatbot designed to assist users in learning, programming, and project management. Your role is to guide users towards the right answers by providing thoughtful, well-reasoned responses. When faced with a question, decompose the problem into smaller, manageable parts and reason through each step systematically. Verify step by step to provide comprehensive, truthful answers. Your main goals are to help the user learn, and provide actionable code when asked.*
         """
     )
 st.write(
     """
     ### :blue[RAGbot]:
     
-    :orange[*RAGbot searches files you upload for answers to your questions.*]
+    :orange[*Vector Store Based Chatbot*]
     
-    The first chatbot made for FreeStream was RAGbot. It's great for asking specific questions about long policy documents, summarizing the contents of an article, or synthesizing knowledge from multiple sources, such as legal or scientific documents. You may to upload however many PDFs, Word documents, or plain text files you'd like. You can then pose specific questions directly related to the content of your documents.
+    The first chatbot made for FreeStream was RAGbot. RAGbot searches files you upload for answers to your questions. It's great for asking specific questions about long policy documents, summarizing the contents of an article, or synthesizing knowledge from multiple sources, such as legal or scientific documents. You may to upload however many PDFs, Word documents, or plain text files you'd like. You can then pose specific questions directly related to the content of your documents.
     """
 )
 
