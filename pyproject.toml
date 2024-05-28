@@ -1,8 +1,8 @@
 [tool.poetry]
 
 name = "FreeStream"
-version = "4.1.4"
-description = "Free AI Assistants."
+version = "4.2.0"
+description = "Template repository for building chatbots."
 authors = ["Daethyra <109057945+Daethyra@users.noreply.github.com>"]
 readme = "README.md"
 license = "GNU AGPL"
