@@ -5262,13 +5262,13 @@ files = [
 
 [[package]]
 name = "unstructured"
-version = "0.14.2"
+version = "0.14.4"
 description = "A library that prepares raw documents for downstream ML tasks."
 optional = false
 python-versions = "<3.13,>=3.9.0"
 files = [
-    {file = "unstructured-0.14.2-py3-none-any.whl", hash = "sha256:2d00463d6406c2a07d54c049e4d7323d2f5c112752f060d6f83bfbb335e676f1"},
-    {file = "unstructured-0.14.2.tar.gz", hash = "sha256:fd1889ea6630b0172c769efc2afc607562707f41f94eb6d734df1a987a1a4be0"},
+    {file = "unstructured-0.14.4-py3-none-any.whl", hash = "sha256:d79104a574fd4de07548ee12ef63c34fab0a454a514d6252a261c7e8f15b9b1f"},
+    {file = "unstructured-0.14.4.tar.gz", hash = "sha256:f4f3b5f18fcc174d3d606cbc3a9affa418494a8ea96424a112d0080fc9e93560"},
 ]
 
 [package.dependencies]
@@ -5297,7 +5297,7 @@ pillow-heif = {version = "*", optional = true, markers = "extra == \"all-docs\""
 pypandoc = {version = "*", optional = true, markers = "extra == \"all-docs\""}
 pypdf = {version = "*", optional = true, markers = "extra == \"all-docs\""}
 pytesseract = {version = "*", optional = true, markers = "extra == \"all-docs\""}
-python-docx = {version = "*", optional = true, markers = "extra == \"all-docs\""}
+python-docx = {version = ">=1.1.2", optional = true, markers = "extra == \"all-docs\""}
 python-iso639 = "*"
 python-magic = "*"
 python-pptx = {version = "<=0.6.23", optional = true, markers = "extra == \"all-docs\""}
@@ -5313,7 +5313,7 @@ xlrd = {version = "*", optional = true, markers = "extra == \"all-docs\""}
 
 [package.extras]
 airtable = ["pyairtable"]
-all-docs = ["effdet", "google-cloud-vision", "markdown", "msg-parser", "networkx", "onnx", "openpyxl", "pandas", "pdf2image", "pdfminer.six", "pikepdf", "pillow-heif", "pypandoc", "pypdf", "pytesseract", "python-docx", "python-pptx (<=0.6.23)", "unstructured-inference (==0.7.33)", "unstructured.pytesseract (>=0.3.12)", "xlrd"]
+all-docs = ["effdet", "google-cloud-vision", "markdown", "msg-parser", "networkx", "onnx", "openpyxl", "pandas", "pdf2image", "pdfminer.six", "pikepdf", "pillow-heif", "pypandoc", "pypdf", "pytesseract", "python-docx (>=1.1.2)", "python-pptx (<=0.6.23)", "unstructured-inference (==0.7.33)", "unstructured.pytesseract (>=0.3.12)", "xlrd"]
 astra = ["astrapy"]
 azure = ["adlfs", "fsspec"]
 azure-cognitive-search = ["azure-search-documents"]
@@ -5327,13 +5327,14 @@ csv = ["pandas"]
 databricks-volumes = ["databricks-sdk"]
 delta-table = ["deltalake", "fsspec"]
 discord = ["discord-py"]
-doc = ["python-docx"]
-docx = ["python-docx"]
+doc = ["python-docx (>=1.1.2)"]
+docx = ["python-docx (>=1.1.2)"]
 dropbox = ["dropboxdrivefs", "fsspec"]
 elasticsearch = ["elasticsearch"]
 embed-huggingface = ["huggingface", "langchain-community", "sentence-transformers"]
 embed-octoai = ["openai", "tiktoken"]
 embed-vertexai = ["langchain", "langchain-community", "langchain-google-vertexai"]
+embed-voyageai = ["langchain", "langchain-voyageai"]
 epub = ["pypandoc"]
 gcs = ["bs4", "fsspec", "gcsfs"]
 github = ["pygithub (>1.58.0)"]
@@ -5343,12 +5344,12 @@ hubspot = ["hubspot-api-client", "urllib3"]
 huggingface = ["langdetect", "sacremoses", "sentencepiece", "torch", "transformers"]
 image = ["effdet", "google-cloud-vision", "onnx", "pdf2image", "pdfminer.six", "pikepdf", "pillow-heif", "pypdf", "pytesseract", "unstructured-inference (==0.7.33)", "unstructured.pytesseract (>=0.3.12)"]
 jira = ["atlassian-python-api"]
-local-inference = ["effdet", "google-cloud-vision", "markdown", "msg-parser", "networkx", "onnx", "openpyxl", "pandas", "pdf2image", "pdfminer.six", "pikepdf", "pillow-heif", "pypandoc", "pypdf", "pytesseract", "python-docx", "python-pptx (<=0.6.23)", "unstructured-inference (==0.7.33)", "unstructured.pytesseract (>=0.3.12)", "xlrd"]
+local-inference = ["effdet", "google-cloud-vision", "markdown", "msg-parser", "networkx", "onnx", "openpyxl", "pandas", "pdf2image", "pdfminer.six", "pikepdf", "pillow-heif", "pypandoc", "pypdf", "pytesseract", "python-docx (>=1.1.2)", "python-pptx (<=0.6.23)", "unstructured-inference (==0.7.33)", "unstructured.pytesseract (>=0.3.12)", "xlrd"]
 md = ["markdown"]
 mongodb = ["pymongo"]
 msg = ["msg-parser"]
 notion = ["htmlBuilder", "notion-client"]
-odt = ["pypandoc", "python-docx"]
+odt = ["pypandoc", "python-docx (>=1.1.2)"]
 onedrive = ["Office365-REST-Python-Client", "bs4", "msal"]
 openai = ["langchain-community", "openai", "tiktoken"]
 opensearch = ["opensearch-py"]
@@ -5718,4 +5719,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.10,<3.12"
-content-hash = "5cff2a07f2ae175fd43d6b9b8abc070115b51259c9102f8e456a67d35a083a20"
+content-hash = "e4e76836c1d5b3ae955c0300ec22ff8ffcf3ac484cc3b2e779e94304848b728c"
