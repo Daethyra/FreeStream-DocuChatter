@@ -20,7 +20,7 @@ setuptools = "^70.0.0"
 torch = "^2.2.0"
 opencv-python-headless = "^4.9.0.80"
 langchain-anthropic = "^0.1.15"
-langchain-community = "^0.2.1"
+langchain-community = "^0.2.4"
 
 [tool.poetry.group.dev.dependencies]
 black = "^24.3.0"
