@@ -18,7 +18,7 @@ sentence-transformers = "^3.0.0"
 faiss-cpu = "^1.7.4"
 setuptools = "^70.0.0"
 torch = "^2.2.0"
-opencv-python-headless = "^4.9.0.80"
+opencv-python-headless = "^4.10.0.82"
 langchain-anthropic = "^0.1.15"
 langchain-community = "^0.2.1"
 
