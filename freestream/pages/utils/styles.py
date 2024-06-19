@@ -34,6 +34,6 @@ a:hover, a:active {
 }
 </style>
 <div class="footer">
-<p>Developed with ❤ by <a href="https://www.linkedin.com/in/damon-carino/" target="_blank">Daethyra</a>. Support this project: <a href="https://ko-fi.com/daethyra" target="_blank">Ko-fi</a></p>
+<p>Developed with ❤ by <a href="https://www.linkedin.com/in/daethyra-carino/" target="_blank">Daethyra</a>.</p>
 </div>
 """
