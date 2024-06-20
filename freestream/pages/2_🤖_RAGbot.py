@@ -27,6 +27,26 @@ st.markdown(footer, unsafe_allow_html=True)
 
 # Add sidebar
 st.sidebar.subheader("__User Panel__")
+
+# Get an OpenAI API Key before continuing
+if "openai_api_key" in st.secrets.OPENAI:
+    openai_api_key = st.secrets.OPENAI.openai_api_key
+else:
+    openai_api_key = st.sidebar.text_input("OpenAI API Key", type="password")
+
+# Get an Anthropic API Key before continuing
+if "anthropic_api_key" in st.secrets.ANTHROPIC:
+    anthropic_api_key = st.secrets.ANTHROPIC.anthropic_api_key
+else:
+    anthropic_api_key = st.sidebar.text_input("Anthropic API Key", type="password")
+
+# Ensure at least one model is accessible
+if not "openai_api_key" in st.secrets and not "openai_api_key" in st.secrets.OPENAI and not "anthropic_api_key" in st.secrets and not "anthropic_api_key" in st.secrets.ANTHROPIC:
+    st.error(
+        body="""You must set at least one API key before you may continue.""",
+        icon="🚨",
+    )
+
 # Add file-upload button
 uploaded_files = st.sidebar.file_uploader(
     label="Upload a PDF or text file",
@@ -66,8 +86,8 @@ memory = ConversationBufferMemory(
 if st.sidebar.button("Clear message history", use_container_width=True):
     msgs.clear()
 
-# Create a dictionary with keys to chat model classes
-model_names = {
+# Create dictionaries with keys to chat model classes
+openai_models = {
     "GPT-3.5 Turbo": ChatOpenAI(  # Define a dictionary entry for the "ChatOpenAI GPT-3.5 Turbo" model
         model="gpt-3.5-turbo",  # Set the OpenAI model name
         openai_api_key=st.secrets.OPENAI.openai_api_key,  # Set the OpenAI API key from the Streamlit secrets manager
@@ -77,13 +97,16 @@ model_names = {
         max_retries=1,  # Set the maximum number of retries for the model
     ),
     "GPT-4o": ChatOpenAI(
-        model="gpt-4o",
-        openai_api_key=st.secrets.OPENAI.openai_api_key,
-        temperature=temperature_slider,
-        streaming=True,
-        max_tokens=4096,
-        max_retries=1,
-    ),
+       model="gpt-4o",
+       openai_api_key=st.secrets.OPENAI.openai_api_key,
+       temperature=temperature_slider,
+       streaming=True,
+       max_tokens=4096,
+       max_retries=1,
+    )
+}
+
+anthropic_models = {
     "Claude: Haiku": ChatAnthropic(
         model="claude-3-haiku-20240307",
         anthropic_api_key=st.secrets.ANTHROPIC.anthropic_api_key,
@@ -106,6 +129,15 @@ model_names = {
         max_tokens=4096,
     ),
 }
+
+# Master dictionary
+model_names = {}
+
+# Update model master dictionary based on present API keys
+if "openai_api_key" in st.secrets or "openai_api_key" in st.secrets.OPENAI:
+    model_names.update(openai_models)
+if "anthropic_api_key" in st.secrets or "anthropic_api_key" in st.secrets.ANTHROPIC:
+    model_names.update(anthropic_models)
 
 # Create a dropdown menu for selecting a chat model
 selected_model = st.selectbox(
