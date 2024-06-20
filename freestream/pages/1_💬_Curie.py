@@ -41,6 +41,11 @@ if "anthropic_api_key" in st.secrets.ANTHROPIC:
 else:
     anthropic_api_key = st.sidebar.text_input("Anthropic API Key", type="password")
 
+# Stop the process if no API key is provided
+if not openai_api_key and not anthropic_api_key:
+    st.error("You must provide at least one API key, either for OpenAI or Anthropic, to continue.", icon="🚨")
+    st.stop()
+
 # Add temperature header
 temperature_header = st.sidebar.markdown(
     """
