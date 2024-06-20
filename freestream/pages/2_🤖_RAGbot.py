@@ -13,7 +13,7 @@ from pages import (PrintRetrievalHandler, RetrieveDocuments, StreamHandler,
 
 # Initialize LangSmith tracing
 os.environ["LANGCHAIN_TRACING_V2"] = "true"
-os.environ["LANGCHAIN_PROJECT"] = "FreeStream-v4.0.0"
+os.environ["LANGCHAIN_PROJECT"] = "FreeStream"
 os.environ["LANGCHAIN_ENDPOINT"] = st.secrets.LANGCHAIN.LANGCHAIN_ENDPOINT
 os.environ["LANGCHAIN_API_KEY"] = st.secrets.LANGCHAIN.LANGCHAIN_API_KEY
 
@@ -40,12 +40,6 @@ if "anthropic_api_key" in st.secrets.ANTHROPIC:
 else:
     anthropic_api_key = st.sidebar.text_input("Anthropic API Key", type="password")
 
-# Ensure at least one model is accessible
-if not "openai_api_key" in st.secrets and not "openai_api_key" in st.secrets.OPENAI and not "anthropic_api_key" in st.secrets and not "anthropic_api_key" in st.secrets.ANTHROPIC:
-    st.error(
-        body="""You must set at least one API key before you may continue.""",
-        icon="🚨",
-    )
 
 # Add file-upload button
 uploaded_files = st.sidebar.file_uploader(
@@ -90,7 +84,7 @@ if st.sidebar.button("Clear message history", use_container_width=True):
 openai_models = {
     "GPT-3.5 Turbo": ChatOpenAI(  # Define a dictionary entry for the "ChatOpenAI GPT-3.5 Turbo" model
         model="gpt-3.5-turbo",  # Set the OpenAI model name
-        openai_api_key=st.secrets.OPENAI.openai_api_key,  # Set the OpenAI API key from the Streamlit secrets manager
+        openai_api_key=openai_api_key,  # Set the OpenAI API key from the Streamlit secrets manager
         temperature=temperature_slider,  # Set the temperature for the model's responses using the sidebar slider
         streaming=True,  # Enable streaming responses for the model
         max_tokens=4096,  # Set the maximum number of tokens for the model's responses
@@ -98,7 +92,7 @@ openai_models = {
     ),
     "GPT-4o": ChatOpenAI(
        model="gpt-4o",
-       openai_api_key=st.secrets.OPENAI.openai_api_key,
+       openai_api_key=openai_api_key,
        temperature=temperature_slider,
        streaming=True,
        max_tokens=4096,
@@ -109,21 +103,21 @@ openai_models = {
 anthropic_models = {
     "Claude: Haiku": ChatAnthropic(
         model="claude-3-haiku-20240307",
-        anthropic_api_key=st.secrets.ANTHROPIC.anthropic_api_key,
+        anthropic_api_key=anthropic_api_key,
         temperature=temperature_slider,
         streaming=True,
         max_tokens=4096,
     ),
     "Claude: Sonnet": ChatAnthropic(
         model="claude-3-sonnet-20240229",
-        anthropic_api_key=st.secrets.ANTHROPIC.anthropic_api_key,
+        anthropic_api_key=anthropic_api_key,
         temperature=temperature_slider,
         streaming=True,
         max_tokens=4096,
     ),
     "Claude: Opus": ChatAnthropic(
         model="claude-3-opus-20240229",
-        anthropic_api_key=st.secrets.ANTHROPIC.anthropic_api_key,
+        anthropic_api_key=anthropic_api_key,
         temperature=temperature_slider,
         streaming=True,
         max_tokens=4096,
@@ -134,9 +128,9 @@ anthropic_models = {
 model_names = {}
 
 # Update model master dictionary based on present API keys
-if "openai_api_key" in st.secrets or "openai_api_key" in st.secrets.OPENAI:
+if openai_api_key:
     model_names.update(openai_models)
-if "anthropic_api_key" in st.secrets or "anthropic_api_key" in st.secrets.ANTHROPIC:
+if anthropic_api_key:
     model_names.update(anthropic_models)
 
 # Create a dropdown menu for selecting a chat model
