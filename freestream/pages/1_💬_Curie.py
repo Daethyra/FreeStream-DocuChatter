@@ -15,7 +15,7 @@ from pages import (PrintRetrievalHandler, RetrieveDocuments, StreamHandler,
 
 # Initialize LangSmith tracing
 os.environ["LANGCHAIN_TRACING_V2"] = "true"
-os.environ["LANGCHAIN_PROJECT"] = "FreeStream-v4.0.0"
+os.environ["LANGCHAIN_PROJECT"] = "FreeStream"
 os.environ["LANGCHAIN_ENDPOINT"] = st.secrets.LANGCHAIN.LANGCHAIN_ENDPOINT
 os.environ["LANGCHAIN_API_KEY"] = st.secrets.LANGCHAIN.LANGCHAIN_API_KEY
 
@@ -28,6 +28,18 @@ st.markdown(footer, unsafe_allow_html=True)
 
 # Add sidebar
 st.sidebar.subheader("__User Panel__")
+
+# Get an OpenAI API Key before continuing
+if "openai_api_key" in st.secrets.OPENAI:
+    openai_api_key = st.secrets.OPENAI.openai_api_key
+else:
+    openai_api_key = st.sidebar.text_input("OpenAI API Key", type="password")
+
+# Get an Anthropic API Key before continuing
+if "anthropic_api_key" in st.secrets.ANTHROPIC:
+    anthropic_api_key = st.secrets.ANTHROPIC.anthropic_api_key
+else:
+    anthropic_api_key = st.sidebar.text_input("Anthropic API Key", type="password")
 
 # Add temperature header
 temperature_header = st.sidebar.markdown(
@@ -42,7 +54,7 @@ temperature_slider = st.sidebar.slider(
     max_value=1.0,
     value=0.35,
     step=0.05,
-    key="llm_temperature",
+    key="temperature_slider",
 )
 
 # Setup memory for contextual conversation
@@ -55,11 +67,11 @@ memory = ConversationBufferMemory(
 if st.sidebar.button("Clear message history", use_container_width=True):
     msgs.clear()
 
-# Create a dictionary with keys to chat model classes
-model_names = {
+# Create dictionaries with keys to chat model classes
+openai_models = {
     "GPT-3.5 Turbo": ChatOpenAI(  # Define a dictionary entry for the "ChatOpenAI GPT-3.5 Turbo" model
         model="gpt-3.5-turbo",  # Set the OpenAI model name
-        openai_api_key=st.secrets.OPENAI.openai_api_key,  # Set the OpenAI API key from the Streamlit secrets manager
+        openai_api_key=openai_api_key,  # Set the OpenAI API key from the Streamlit secrets manager
         temperature=temperature_slider,  # Set the temperature for the model's responses using the sidebar slider
         streaming=True,  # Enable streaming responses for the model
         max_tokens=4096,  # Set the maximum number of tokens for the model's responses
@@ -67,34 +79,46 @@ model_names = {
     ),
     "GPT-4o": ChatOpenAI(
        model="gpt-4o",
-       openai_api_key=st.secrets.OPENAI.openai_api_key,
+       openai_api_key=openai_api_key,
        temperature=temperature_slider,
        streaming=True,
        max_tokens=4096,
        max_retries=1,
-    ),
+    )
+}
+
+anthropic_models = {
     "Claude: Haiku": ChatAnthropic(
         model="claude-3-haiku-20240307",
-        anthropic_api_key=st.secrets.ANTHROPIC.anthropic_api_key,
+        anthropic_api_key=anthropic_api_key,
         temperature=temperature_slider,
         streaming=True,
         max_tokens=4096,
     ),
     "Claude: Sonnet": ChatAnthropic(
         model="claude-3-sonnet-20240229",
-        anthropic_api_key=st.secrets.ANTHROPIC.anthropic_api_key,
+        anthropic_api_key=anthropic_api_key,
         temperature=temperature_slider,
         streaming=True,
         max_tokens=4096,
     ),
     "Claude: Opus": ChatAnthropic(
         model="claude-3-opus-20240229",
-        anthropic_api_key=st.secrets.ANTHROPIC.anthropic_api_key,
+        anthropic_api_key=anthropic_api_key,
         temperature=temperature_slider,
         streaming=True,
         max_tokens=4096,
     ),
 }
+
+# Master dictionary
+model_names = {}
+
+# Update model master dictionary based on present API keys
+if openai_api_key:
+    model_names.update(openai_models)
+if anthropic_api_key:
+    model_names.update(anthropic_models)
 
 # Create a dropdown menu for selecting a chat model
 selected_model = st.selectbox(
