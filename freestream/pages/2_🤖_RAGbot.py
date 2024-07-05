@@ -48,7 +48,7 @@ if not openai_api_key and not anthropic_api_key:
 # Add file-upload button
 uploaded_files = st.sidebar.file_uploader(
     label="Upload a PDF or text file",
-    type=["pdf", "doc", "docx", "txt"],
+    type=["pdf", "doc", "docx", "txt", "md"],
     help="Types supported: pdf, doc, docx, txt \n\nConsider the size of your files before you upload. Processing speed varies by server load.",
     accept_multiple_files=True,
 )
@@ -112,20 +112,20 @@ anthropic_models = {
         streaming=True,
         max_tokens=4096,
     ),
-    "Claude: Sonnet": ChatAnthropic(
-        model="claude-3-sonnet-20240229",
+    "Claude 3.5: Sonnet": ChatAnthropic(
+        model="claude-3-5-sonnet-20240620",
         anthropic_api_key=anthropic_api_key,
         temperature=temperature_slider,
         streaming=True,
         max_tokens=4096,
     ),
-    "Claude: Opus": ChatAnthropic(
-        model="claude-3-opus-20240229",
-        anthropic_api_key=anthropic_api_key,
-        temperature=temperature_slider,
-        streaming=True,
-        max_tokens=4096,
-    ),
+    # "Claude: Opus": ChatAnthropic(
+    #     model="claude-3-opus-20240229",
+    #     anthropic_api_key=anthropic_api_key,
+    #     temperature=temperature_slider,
+    #     streaming=True,
+    #     max_tokens=4096,
+    # ),
 }
 
 # Master dictionary
