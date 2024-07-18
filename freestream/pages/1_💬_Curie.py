@@ -74,8 +74,8 @@ if st.sidebar.button("Clear message history", use_container_width=True):
 
 # Create dictionaries with keys to chat model classes
 openai_models = {
-    "GPT-3.5 Turbo": ChatOpenAI(  # Define a dictionary entry for the "ChatOpenAI GPT-3.5 Turbo" model
-        model="gpt-3.5-turbo",  # Set the OpenAI model name
+    "GPT-4o Mini": ChatOpenAI(  # Define a dictionary entry for the "ChatOpenAI GPT-3.5 Turbo" model
+        model="gpt-4o-mini",  # Set the OpenAI model name
         openai_api_key=openai_api_key,  # Set the OpenAI API key from the Streamlit secrets manager
         temperature=temperature_slider,  # Set the temperature for the model's responses using the sidebar slider
         streaming=True,  # Enable streaming responses for the model
