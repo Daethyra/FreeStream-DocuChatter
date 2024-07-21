@@ -1133,12 +1133,12 @@ files = [
 google-auth = ">=2.14.1,<3.0.dev0"
 googleapis-common-protos = ">=1.56.2,<2.0.dev0"
 grpcio = [
-    {version = ">=1.33.2,<2.0dev", optional = true, markers = "python_version < \"3.11\" and extra == \"grpc\""},
     {version = ">=1.49.1,<2.0dev", optional = true, markers = "python_version >= \"3.11\" and extra == \"grpc\""},
+    {version = ">=1.33.2,<2.0dev", optional = true, markers = "python_version < \"3.11\" and extra == \"grpc\""},
 ]
 grpcio-status = [
-    {version = ">=1.33.2,<2.0.dev0", optional = true, markers = "python_version < \"3.11\" and extra == \"grpc\""},
     {version = ">=1.49.1,<2.0.dev0", optional = true, markers = "python_version >= \"3.11\" and extra == \"grpc\""},
+    {version = ">=1.33.2,<2.0.dev0", optional = true, markers = "python_version < \"3.11\" and extra == \"grpc\""},
 ]
 proto-plus = ">=1.22.3,<2.0.0dev"
 protobuf = ">=3.19.5,<3.20.0 || >3.20.0,<3.20.1 || >3.20.1,<4.21.0 || >4.21.0,<4.21.1 || >4.21.1,<4.21.2 || >4.21.2,<4.21.3 || >4.21.3,<4.21.4 || >4.21.4,<4.21.5 || >4.21.5,<6.0.0.dev0"
@@ -2841,9 +2841,9 @@ files = [
 
 [package.dependencies]
 numpy = [
+    {version = ">=1.23.5", markers = "python_version >= \"3.11\""},
     {version = ">=1.21.4", markers = "python_version >= \"3.10\" and platform_system == \"Darwin\" and python_version < \"3.11\""},
     {version = ">=1.21.2", markers = "platform_system != \"Darwin\" and python_version >= \"3.10\" and python_version < \"3.11\""},
-    {version = ">=1.23.5", markers = "python_version >= \"3.11\""},
 ]
 
 [[package]]
@@ -2864,9 +2864,9 @@ files = [
 
 [package.dependencies]
 numpy = [
+    {version = ">=1.23.5", markers = "python_version >= \"3.11\""},
     {version = ">=1.21.4", markers = "python_version >= \"3.10\" and platform_system == \"Darwin\" and python_version < \"3.11\""},
     {version = ">=1.21.2", markers = "platform_system != \"Darwin\" and python_version >= \"3.10\" and python_version < \"3.11\""},
-    {version = ">=1.23.5", markers = "python_version >= \"3.11\""},
 ]
 
 [[package]]
@@ -3008,8 +3008,8 @@ files = [
 
 [package.dependencies]
 numpy = [
-    {version = ">=1.22.4", markers = "python_version < \"3.11\""},
     {version = ">=1.23.2", markers = "python_version == \"3.11\""},
+    {version = ">=1.22.4", markers = "python_version < \"3.11\""},
 ]
 python-dateutil = ">=2.8.2"
 pytz = ">=2020.1"
@@ -5345,13 +5345,13 @@ files = [
 
 [[package]]
 name = "unstructured"
-version = "0.14.10"
+version = "0.15.0"
 description = "A library that prepares raw documents for downstream ML tasks."
 optional = false
 python-versions = "<3.13,>=3.9.0"
 files = [
-    {file = "unstructured-0.14.10-py3-none-any.whl", hash = "sha256:127052de54f0c49cd7c4432dd5e6c1f3fe0b8521192e32b126a0758dcc06da65"},
-    {file = "unstructured-0.14.10.tar.gz", hash = "sha256:7076567a27e204ddbe129eb99e66bcc90c1cae6c4d4138506f6d555a527be73f"},
+    {file = "unstructured-0.15.0-py3-none-any.whl", hash = "sha256:43538e0463aec3741eef06eaf69fc27f6fdaffa7376816c797cb25abb9b55b45"},
+    {file = "unstructured-0.15.0.tar.gz", hash = "sha256:b75deb8e46dffbe1c6f82936810a31ab9516923c3a60bd01821d7701fa13b628"},
 ]
 
 [package.dependencies]
@@ -5441,7 +5441,7 @@ openai = ["langchain-community", "openai", "tiktoken"]
 opensearch = ["opensearch-py"]
 org = ["pypandoc"]
 outlook = ["Office365-REST-Python-Client", "msal"]
-paddleocr = ["unstructured.paddleocr (==2.6.1.3)"]
+paddleocr = ["unstructured.paddleocr (==2.8.0.1)"]
 pdf = ["effdet", "google-cloud-vision", "onnx", "pdf2image", "pdfminer.six", "pikepdf", "pillow-heif", "pypdf", "pytesseract", "unstructured-inference (==0.7.36)", "unstructured.pytesseract (>=0.3.12)"]
 pinecone = ["pinecone-client (>=3.7.1)"]
 postgres = ["psycopg2-binary"]
@@ -5809,4 +5809,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.10,<3.12"
-content-hash = "00c50779850d4e5d8082c638722e69dec31490a9efe9a8d8a112a826f21be93f"
+content-hash = "c1e46426c8c2583a596e1ea9ca569bdc602ca9e1efc8aa2c9c7d93121a882897"
