@@ -19,7 +19,7 @@ faiss-cpu = "^1.7.4"
 setuptools = "^70.0.0"
 torch = "^2.2.0"
 opencv-python-headless = "^4.9.0.80"
-langchain-anthropic = "^0.1.15"
+langchain-anthropic = "^0.1.22"
 langchain-community = "^0.2.1"
 
 [tool.poetry.group.dev.dependencies]
