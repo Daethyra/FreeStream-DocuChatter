@@ -1,14 +1,14 @@
 [tool.poetry]
 
 name = "FreeStream"
-version = "4.4.3"
-description = "Template repository for building chatbots."
+version = "4.4.4"
+description = "Streamlit template repository for building chatbots."
 authors = ["Daethyra <109057945+Daethyra@users.noreply.github.com>"]
 readme = "README.md"
 license = "GNU AGPL"
 
 [tool.poetry.dependencies]
-python = ">=3.10,<3.12"
+python = ">=3.10,<3.13"
 
 langchain = "^0.2.3"
 langchain-openai = "^0.1.8"
