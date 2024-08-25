@@ -48,8 +48,8 @@ if not openai_api_key and not anthropic_api_key:
 # Add file-upload button
 uploaded_files = st.sidebar.file_uploader(
     label="Upload a PDF or text file",
-    type=["pdf", "doc", "docx", "txt", "md"],
-    help="Types supported: pdf, doc, docx, txt \n\nConsider the size of your files before you upload. Processing speed varies by server load.",
+    type=["pdf", "doc", "docx", "txt", "md", "html", "py", "ipynb", "eml", "json", "csv", "rtf", "log"],
+    help="Processing speed varies by server load. Consider the size of your files before you upload.",
     accept_multiple_files=True,
 )
 if not uploaded_files:

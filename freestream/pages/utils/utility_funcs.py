@@ -11,8 +11,8 @@ import torch
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.chat_message_histories import \
     StreamlitChatMessageHistory
-from langchain_community.document_loaders import UnstructuredFileLoader
-from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_unstructured import UnstructuredLoader
+from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain_core.callbacks.base import BaseCallbackHandler
 from langchain_core.documents import Document
@@ -50,7 +50,7 @@ class RetrieveDocuments:
         self.docs = []
         self.temp_dir = tempfile.TemporaryDirectory()
         self.text_splitter = RecursiveCharacterTextSplitter(
-            chunk_size=2500, chunk_overlap=50
+            chunk_size=10000, chunk_overlap=1000
         )
         self.embeddings = HuggingFaceEmbeddings(
             model_name="all-MiniLM-L6-v2",
@@ -91,7 +91,7 @@ class RetrieveDocuments:
 
         # Define retriever
         retriever = vectordb.as_retriever(
-            search_type="mmr", search_kwargs={"k": 5, "fetch_k": 10, "lambda_mult": 0.6}
+            search_type="mmr", search_kwargs={"k": 3, "fetch_k": 7, "lambda_mult": 0.2}
         )
 
         return retriever
