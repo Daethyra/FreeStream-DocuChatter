@@ -50,7 +50,7 @@ class RetrieveDocuments:
         self.docs = []
         self.temp_dir = tempfile.TemporaryDirectory()
         self.text_splitter = RecursiveCharacterTextSplitter(
-            chunk_size=2500, chunk_overlap=50
+            chunk_size=10000, chunk_overlap=1000
         )
         self.embeddings = HuggingFaceEmbeddings(
             model_name="all-MiniLM-L6-v2",
