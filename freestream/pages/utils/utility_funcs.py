@@ -11,8 +11,8 @@ import torch
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.chat_message_histories import \
     StreamlitChatMessageHistory
-from langchain_community.document_loaders import UnstructuredFileLoader
-from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_unstructured import UnstructuredLoader
+from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain_core.callbacks.base import BaseCallbackHandler
 from langchain_core.documents import Document
@@ -79,7 +79,7 @@ class RetrieveDocuments:
             temp_filepath = os.path.join(temp_dir.name, file.name)
             with open(temp_filepath, "wb") as f:
                 f.write(file.getvalue())
-            loader = UnstructuredFileLoader(temp_filepath)
+            loader = UnstructuredLoader(temp_filepath)
             docs.extend(loader.load())
             logger.info("Loaded document: %s", file.name)
 
