@@ -16,7 +16,7 @@ streamlit = "1.37.1"
 unstructured = {extras = ["all-docs"], version = "^0.15.7"}
 sentence-transformers = "^3.0.0"
 faiss-cpu = "^1.7.4"
-setuptools = "^73.0.1"
+setuptools = "^74.1.2"
 torch = "^2.2.0"
 opencv-python-headless = "^4.9.0.80"
 langchain-anthropic = "^0.1.15"
