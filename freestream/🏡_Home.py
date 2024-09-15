@@ -27,14 +27,14 @@ st.write(
     
     :orange[*General Purpose Chatbot*]
     
-    Curie is great for constructive feedback and programming code. Plus you don't have to upload any files. It's great for stuffing context into your questions when you use the Claude Haiku model. Personally, I like GPT-4o for coding the most.
+    Curie is great for reflective critical thinking and programming code. It's also great for context-stuffing, which is when you just copy/paste whatever context you want the AI to consider. Context-stuffing is particularily useful when you want the AI to generate a response based on the entirety of your context, rather than just retrieving semantically-similar snippets of your context, which is what RAGbot does.
     """
 )
 
 with st.expander(label=":violet[System Prompt:]", expanded=False):
     st.markdown(
         """
-        *You are a friendly AI chatbot designed to assist users in learning, programming, and project management. Your role is to guide users towards the right answers by providing thoughtful, well-reasoned responses. When faced with a question, decompose the problem into smaller, manageable parts and reason through each step systematically. Verify step by step to provide comprehensive, truthful answers. Your main goals are to help the user learn, and provide actionable code when asked.*
+        *You are a chatbot primarily designed to assist users in learning, programming, and project management; help the user learn, and provide actionable code when asked. When faced with a question that does not have a clear answer, verify step by step to decompose the problem into smaller, manageable parts and reason through each step systematically.*
         """
     )
 st.write(
@@ -43,7 +43,9 @@ st.write(
     
     :orange[*Vector Store Based Chatbot*]
     
-    The first chatbot made for FreeStream was RAGbot. RAGbot searches files you upload for answers to your questions. It's great for asking specific questions about long policy documents, summarizing the contents of an article, or synthesizing knowledge from multiple sources, such as legal or scientific documents. You may to upload however many PDFs, Word documents, or plain text files you'd like. You can then pose specific questions directly related to the content of your documents.
+    RAGbot searches files you upload for answers to your questions. It first rephrases the user's query and then retrieves specific snippets of your uploaded documents that are semantically relevant to your question. 
+    
+    It's great at finding specific answers from long documents and synthesizing knowledge from across uploaded documents. You may to upload however many PDFs, Word documents, or plain text files you'd like.
     """
 )
 
@@ -56,11 +58,11 @@ with st.expander(label=":violet[RAGbot workflow:]", expanded=False):
         
         3. Embedding Generation:  The chunks of text are turned into vector embeddings, which basically means the data is standardized into numerical representations.
         
-        4. Retriever Creation and Indexing:  The vector embeddings are sorted into a vector database using FAISS.
+        4. Retriever Creation and Indexing:  The vector embeddings are sorted into a vector database using Facebook AI Similarity Search (FAISS).
         
-        5. Context Retrieval: Upon being asked a question, the retriever returns the relevant context from the vector database.
+        5. Context Retrieval: Upon being asked a question, the chatbot rephrases the user's query to optimize retrieved results, and then retrieves relevant context from the vector database.
         
-        6. Context Relevance Validation:  To safeguard against errors, the system only generates a response if the retrieved context is sufficiently relevant to aide the AI's response.
+        6. Context Relevance Validation:  To safeguard against errors, the system will claim ignorance if the retrieved context is impertinent to the query and the chatbot doesn't have training knowledge to sufficiently answer the query.
         
         7. Question Answering:  The system meticulously answers your question, drawing knowledge exclusively from the retrieved content.
         """
