@@ -1,7 +1,7 @@
 [tool.poetry]
 
 name = "FreeStream"
-version = "4.4.6-1"
+version = "5.0.0"
 description = "Streamlit template repository for building chatbots."
 authors = ["Daethyra <109057945+Daethyra@users.noreply.github.com>"]
 readme = "README.md"
@@ -10,13 +10,13 @@ license = "GNU AGPL"
 [tool.poetry.dependencies]
 python = ">=3.10,<3.13"
 
-langchain = "^0.2.3"
-langchain-openai = "^0.1.8"
-streamlit = "1.37.1"
+langchain = "^0.2.16"
+langchain-openai = "0.1.23"
+streamlit = "1.38.0"
 unstructured = {extras = ["all-docs"], version = "^0.15.7"}
 sentence-transformers = "^3.0.0"
 faiss-cpu = "^1.7.4"
-setuptools = "^73.0.1"
+setuptools = "^70.0.0"
 torch = "^2.2.0"
 opencv-python-headless = "^4.9.0.80"
 langchain-anthropic = "^0.1.15"
