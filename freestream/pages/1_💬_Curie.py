@@ -72,7 +72,7 @@ memory = ConversationBufferMemory(
 if st.sidebar.button("Clear message history", use_container_width=True):
     msgs.clear()
 
-# Create dictionaries with keys to chat model classes
+# Create dictionaries with chat models as keys
 openai_models = {
     "GPT-4o Mini": ChatOpenAI(  # Define a dictionary entry for the "ChatOpenAI GPT-3.5 Turbo" model
         model="gpt-4o-mini",  # Set the OpenAI model name
@@ -89,7 +89,23 @@ openai_models = {
        streaming=True,
        max_tokens=4096,
        max_retries=1,
-    )
+    ),
+    # "GPT-o1-mini": ChatOpenAI(  # Define a dictionary entry for the "ChatOpenAI GPT-3.5 Turbo" model
+    #     model="o1-mini",  # Set the OpenAI model name
+    #     openai_api_key=openai_api_key,  # Set the OpenAI API key from the Streamlit secrets manager
+    #     temperature=temperature_slider,  # Set the temperature for the model's responses using the sidebar slider
+    #     streaming=True,  # Enable streaming responses for the model
+    #     max_tokens=4096,  # Set the maximum number of tokens for the model's responses
+    #     max_retries=1,  # Set the maximum number of retries for the model
+    # ),
+    # "GPT-o1-preview": ChatOpenAI(
+    #    model="o1-preview",
+    #    openai_api_key=openai_api_key,
+    #    temperature=temperature_slider,
+    #    streaming=True,
+    #    max_tokens=4096,
+    #    max_retries=1,
+    # )
 }
 
 anthropic_models = {
@@ -145,7 +161,7 @@ prompt_template = ChatPromptTemplate.from_messages(
     [
         (
             "system",
-            """You are a friendly AI chatbot designed to assist users in learning, programming, and project management. Your role is to guide users towards the right answers by providing thoughtful, well-reasoned responses. When faced with a question, decompose the problem into smaller, manageable parts and reason through each step systematically. Verify step by step to provide comprehensive, truthful answers. Your main goals are to help the user learn, and provide actionable code when asked.""",
+            """You are a chatbot primarily designed to assist users in learning, programming, and project management; help the user learn, and provide actionable code when asked. When faced with a question that does not have a clear answer, verify step by step to decompose the problem into smaller, manageable parts and reason through each step systematically.""",
         ),
         MessagesPlaceholder(variable_name="chat_history"),
         ("human", "{question}"),
