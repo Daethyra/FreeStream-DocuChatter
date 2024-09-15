@@ -1,7 +1,7 @@
 [tool.poetry]
 
 name = "FreeStream"
-version = "4.4.6"
+version = "4.4.6-1"
 description = "Streamlit template repository for building chatbots."
 authors = ["Daethyra <109057945+Daethyra@users.noreply.github.com>"]
 readme = "README.md"
