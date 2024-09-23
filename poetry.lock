@@ -1194,12 +1194,12 @@ files = [
 google-auth = ">=2.14.1,<3.0.dev0"
 googleapis-common-protos = ">=1.56.2,<2.0.dev0"
 grpcio = [
-    {version = ">=1.33.2,<2.0dev", optional = true, markers = "python_version < \"3.11\" and extra == \"grpc\""},
     {version = ">=1.49.1,<2.0dev", optional = true, markers = "python_version >= \"3.11\" and extra == \"grpc\""},
+    {version = ">=1.33.2,<2.0dev", optional = true, markers = "python_version < \"3.11\" and extra == \"grpc\""},
 ]
 grpcio-status = [
-    {version = ">=1.33.2,<2.0.dev0", optional = true, markers = "python_version < \"3.11\" and extra == \"grpc\""},
     {version = ">=1.49.1,<2.0.dev0", optional = true, markers = "python_version >= \"3.11\" and extra == \"grpc\""},
+    {version = ">=1.33.2,<2.0.dev0", optional = true, markers = "python_version < \"3.11\" and extra == \"grpc\""},
 ]
 proto-plus = ">=1.22.3,<2.0.0dev"
 protobuf = ">=3.19.5,<3.20.0 || >3.20.0,<3.20.1 || >3.20.1,<4.21.0 || >4.21.0,<4.21.1 || >4.21.1,<4.21.2 || >4.21.2,<4.21.3 || >4.21.3,<4.21.4 || >4.21.4,<4.21.5 || >4.21.5,<6.0.0.dev0"
@@ -1867,8 +1867,8 @@ langchain-core = ">=0.2.38,<0.3.0"
 langchain-text-splitters = ">=0.2.0,<0.3.0"
 langsmith = ">=0.1.17,<0.2.0"
 numpy = [
-    {version = ">=1,<2", markers = "python_version < \"3.12\""},
     {version = ">=1.26.0,<2.0.0", markers = "python_version >= \"3.12\""},
+    {version = ">=1,<2", markers = "python_version < \"3.12\""},
 ]
 pydantic = ">=1,<3"
 PyYAML = ">=5.3"
@@ -1910,8 +1910,8 @@ langchain = ">=0.2.16,<0.3.0"
 langchain-core = ">=0.2.39,<0.3.0"
 langsmith = ">=0.1.112,<0.2.0"
 numpy = [
-    {version = ">=1,<2", markers = "python_version < \"3.12\""},
     {version = ">=1.26.0,<2.0.0", markers = "python_version >= \"3.12\""},
+    {version = ">=1,<2", markers = "python_version < \"3.12\""},
 ]
 PyYAML = ">=5.3"
 requests = ">=2,<3"
@@ -2939,10 +2939,10 @@ files = [
 
 [package.dependencies]
 numpy = [
+    {version = ">=1.26.0", markers = "python_version >= \"3.12\""},
+    {version = ">=1.23.5", markers = "python_version >= \"3.11\" and python_version < \"3.12\""},
     {version = ">=1.21.4", markers = "python_version >= \"3.10\" and platform_system == \"Darwin\" and python_version < \"3.11\""},
     {version = ">=1.21.2", markers = "platform_system != \"Darwin\" and python_version >= \"3.10\" and python_version < \"3.11\""},
-    {version = ">=1.23.5", markers = "python_version >= \"3.11\" and python_version < \"3.12\""},
-    {version = ">=1.26.0", markers = "python_version >= \"3.12\""},
 ]
 
 [[package]]
@@ -2963,10 +2963,10 @@ files = [
 
 [package.dependencies]
 numpy = [
+    {version = ">=1.26.0", markers = "python_version >= \"3.12\""},
+    {version = ">=1.23.5", markers = "python_version >= \"3.11\" and python_version < \"3.12\""},
     {version = ">=1.21.4", markers = "python_version >= \"3.10\" and platform_system == \"Darwin\" and python_version < \"3.11\""},
     {version = ">=1.21.2", markers = "platform_system != \"Darwin\" and python_version >= \"3.10\" and python_version < \"3.11\""},
-    {version = ">=1.23.5", markers = "python_version >= \"3.11\" and python_version < \"3.12\""},
-    {version = ">=1.26.0", markers = "python_version >= \"3.12\""},
 ]
 
 [[package]]
@@ -3111,9 +3111,9 @@ files = [
 
 [package.dependencies]
 numpy = [
-    {version = ">=1.22.4", markers = "python_version < \"3.11\""},
-    {version = ">=1.23.2", markers = "python_version == \"3.11\""},
     {version = ">=1.26.0", markers = "python_version >= \"3.12\""},
+    {version = ">=1.23.2", markers = "python_version == \"3.11\""},
+    {version = ">=1.22.4", markers = "python_version < \"3.11\""},
 ]
 python-dateutil = ">=2.8.2"
 pytz = ">=2020.1"
@@ -5476,13 +5476,13 @@ files = [
 
 [[package]]
 name = "unstructured"
-version = "0.15.12"
+version = "0.15.13"
 description = "A library that prepares raw documents for downstream ML tasks."
 optional = false
 python-versions = "<3.13,>=3.9.0"
 files = [
-    {file = "unstructured-0.15.12-py3-none-any.whl", hash = "sha256:a789c8bfde6da99bb9985301b19a8ed06e1c226f447921683a939d3412f72403"},
-    {file = "unstructured-0.15.12.tar.gz", hash = "sha256:22af44a9c949f9239d2eab2826e002fbbbbdb534a1698d3319a107f982feac2b"},
+    {file = "unstructured-0.15.13-py3-none-any.whl", hash = "sha256:6885add1bb1e4e428cf76f160f4a6f5aed6e707b3b22e69c716efb19a4957dbf"},
+    {file = "unstructured-0.15.13.tar.gz", hash = "sha256:3d62573d8f0caca9211ce5e7f2705d8c7ab67e4427bd18259e218a19bbb21c25"},
 ]
 
 [package.dependencies]
@@ -5535,7 +5535,7 @@ azure-cognitive-search = ["azure-search-documents"]
 bedrock = ["boto3", "langchain-community"]
 biomed = ["bs4"]
 box = ["boxfs", "fsspec"]
-chroma = ["chromadb", "importlib-metadata (>=8.2.0)", "tenacity (==8.5.0)", "typer (<=0.9.0)"]
+chroma = ["chromadb (>0.4.14)", "importlib-metadata (>=8.2.0)", "tenacity (==8.5.0)", "typer (<=0.9.0)"]
 clarifai = ["clarifai"]
 confluence = ["atlassian-python-api"]
 csv = ["pandas"]
@@ -5944,4 +5944,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.10,<3.13"
-content-hash = "4c48b77c9f5a853dcc8b6cf8bfd02a117e6cc124b1c136d7cbda7c661dc33586"
+content-hash = "a73300cc65dc241cfaecad3ab5469c24e3d3aa5ac4128fd131ef78f25d0ed27d"
